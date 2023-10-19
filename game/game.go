@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-const maxTries = 10
+const maxRetries = 10
 
 func Play() {
 
@@ -22,7 +22,7 @@ func Play() {
 			break
 		}
 	}
-	currentTry := maxTries
+	retries := maxRetries
 	for {
 
 		fmt.Printf("Type a number: ")
@@ -53,15 +53,15 @@ func Play() {
 			break
 		}
 
-		currentTry--
-		if currentTry == 0 {
+		retries--
+		if retries == 0 {
 			status = fmt.Sprintf("Sorry you did not guess the correct number. it was %d", source)
 		} else {
-			status = fmt.Sprintf("You have %d attempts left", currentTry)
+			status = fmt.Sprintf("You have %d attempts left", retries)
 		}
 		fmt.Println(status)
 
-		if currentTry == 0 {
+		if retries == 0 {
 			break
 		}
 	}
